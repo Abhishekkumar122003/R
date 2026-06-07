@@ -1,11 +1,22 @@
 import { useState, useEffect } from "react"
 
 function App(){
+
+  // ----------Conditional Rendering ----------------
+  const [CountVisible , setCountVisible] = useState(true);
+  useEffect(()=>{
+  setInterval(()=>{
+    setCountVisible(c=>!c)
+  },5000)
+  },[])
+ // ------------------------------------------------
+
   return <div>
     <b>
     hi there 
     </b>
-    <Counter></Counter>
+    {CountVisible ? <Counter></Counter>  :null }
+    {/* <Counter></Counter> */}
   </div>
 }
 
