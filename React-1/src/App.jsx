@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function App(){
   return <div>
@@ -30,10 +30,17 @@ function Counter(){
 
   //------------------------make a clock -----------------------//
 
-  setInterval(function (){
-    setCount(count +1)
-  }, 1000)
+  // setInterval(function (){
+  //   setCount(count +1)   // what happenes here after each time "count" state is called the "Counter function" has been called result more "setInterval" called 
+  // }, 1000)              // SO to stop this we have to "useEffect hooks"
+     console.log("Counter")
 
+  useEffect(function(){  // hooking into the lifecycle event of react 
+    setInterval(function(){
+      setCount(count => count + 1)
+    }, 1000);
+    console.log("Mounted")
+  } , []);  //this "ARRAY" is called dependency ARRAY
 
   return <div>
     <h1>{count}</h1>
