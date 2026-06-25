@@ -6,7 +6,7 @@ const Counter = () => {
     
     setInterval( function (){
       setCount(count + 1)
-    },1000)
+    },100000)
 
     // function increaseCounter(){
     //   setCount(count  + 1);

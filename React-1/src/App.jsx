@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import Counter from './assets/Hooks/Usestate_Hooks/Counter'
+import Counters from './assets/Hooks/UseEffect_Hooks/Counters'
 
 const App = () => {
 
   return (
     <>
-   <Counter/>
-
+   {/* <Counter/> */}
+    <Counters/>
 
     </>
   )
