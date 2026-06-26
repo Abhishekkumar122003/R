@@ -17,7 +17,10 @@ const App = () => {
   return (
     <>
    {/* <Counter/> */}
-    {CounterVisible ? <Counters/>  : null}
+    {/* {CounterVisible ? <Counters/>  : null} */}
+    
+    {/*how to make my counter not lossing the value , everyTime it rerander it loss its previous value and start from zero */}
+    <div  style={{visibility: CounterVisible? "visible" : "hidden" }}><Counters/></div>
 
     </>
   )
