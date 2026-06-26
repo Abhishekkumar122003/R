@@ -1,13 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Counter from './assets/Hooks/Usestate_Hooks/Counter'
 import Counters from './assets/Hooks/UseEffect_Hooks/Counters'
 
 const App = () => {
+  let [CounterVisible, setCounterVisible] = useState(true);
+
+    useEffect( function(){
+             setInterval(function () {
+          setCounterVisible(c =>!c)},
+      5000);
+      
+      } 
+      ,[])
+   //applying Coonditional rendering
 
   return (
     <>
    {/* <Counter/> */}
-    <Counters/>
+    {CounterVisible ? <Counters/>  : null}
 
     </>
   )
