@@ -10,8 +10,9 @@ const App = () => {
           setCounterVisible(c =>!c)},
       5000);
       
-      } 
-      ,[])
+      } // just for the shak of I am doing the git push
+
+      ,[CounterVisible])
    //applying Coonditional rendering
 
   return (
