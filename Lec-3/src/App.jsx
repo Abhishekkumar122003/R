@@ -3,17 +3,34 @@ import React from 'react'
     //Defining the state of my application
 const App = () => {
   return (
-    <div>
+    <div style={{backgroundColor:"#dfe8e9" ,height:"100vh"}}>
       hii  theree
-      <PostComponent style={{height:"100vh"}} />
+      <PostComponent  />
     </div>
     
   )
 }
 
 function PostComponent(){
-  return <div style={{display: "flex" ,width:"100vh", height:"100vh",  borderWidth:1, backgroundColor: "#636e72" , }}>
-    <img src="https://harkirat.classx.co.in/new-courses"  style={{height: 20 , width:20,}}/>
+  return <div style={{width:200,backgroundColor:"white", borderRadius:10, borderColor:"grey", borderWidth:1, height:"10vh" }}>
+    <div style={{ display: 'flex'}}>
+      <img src="https://appx-content-v2.classx.co.in/paid_course3/2026-05-28-0_13465652079995793.jpeg" style={{
+        width:30,
+        height:30,
+         borderRadius:20,
+      }} />
+      <div style={{
+        fontSize:10,
+        marginLeft:9
+      }}>
+        <b>100xdevs</b>
+        <div>28, 000 followers <br /> 12m</div>
+      </div>
+          
+      <div>
+          want to know how to win big? Check out how these folks won $6000 in bounties.
+      </div>
+    </div>
   </div>
 }
     
