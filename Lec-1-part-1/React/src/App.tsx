@@ -4,15 +4,27 @@ type PostProps = {
 }
 
 function App() {
-
+const post = [{
+      name:"hrkirt",
+      content:"today I Launch new Course"
+   },
+  {
+    name:"Abhishek",
+    content:"Hellooooo gysssss!! Today I got my First Dream Job, with a wopping packeage of $40000 inHand a year 😁😎"
+  },
+  {
+    name:"Simiran",
+    content:"Hi Abhishek let's Connect"
+  }]
 
   return (
     <>
       <div>
        <h1> Linked!!!</h1>
-        <Post name= "hrkirt" content= "today I launch new Course" />
+        {/* <Post name= "hrkirt" content= "today I launch new Course" />
         <Post name="Abhishek" content= "today I learned new thing " />
-        <Post name="shumesh" content= "hi" />
+        <Post name="shumesh" content= "hi" /> */}
+        <Post name={post[0].name} content={post[0].content} />
       </div>
     </>
   )
