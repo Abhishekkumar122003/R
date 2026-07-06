@@ -16,7 +16,12 @@ const post = [{
     name:"Simiran",
     content:"Hi Abhishek let's Connect"
   }]
-
+ let postsComponents = [
+        <Post name= "hrkirt" content= "today I launch new Course" />,
+        <Post name="Abhishek" content= "today I learned new thing " />,
+        <Post name="shumesh" content= "hi" />
+ ]
+ let postComponents = post.map(p =><Post name= {p.name} content= {p.content} />)
   return (
     <>
       <div>
@@ -25,6 +30,10 @@ const post = [{
         <Post name="Abhishek" content= "today I learned new thing " />
         <Post name="shumesh" content= "hi" /> */}
         <Post name={post[0].name} content={post[0].content} />
+        {postsComponents} 
+        
+        {postComponents} //or simply 
+        { post.map(P => <Post name={P.name} content= {P.content} />)}
       </div>
     </>
   )
