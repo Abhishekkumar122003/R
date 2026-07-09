@@ -11,7 +11,7 @@ axios.get("https://jsonplaceholder.typicode.com/todos/")
     })
 
     return function (){
-      
+
     }
     
   }, [])
@@ -22,7 +22,13 @@ axios.get("https://jsonplaceholder.typicode.com/todos/")
     )
   }
 
-function Todo(props:any) {
+   type postProps = {
+    userId:number,
+    id: number,
+    title:string,
+    completed:boolean
+   }
+function Todo(props:postProps) {
   return   (<>
         <div style={{marginTop:2, borderRadius:20, padding:20, width:"500px",border:"2px solid black" , fontSize:7 ,borderColor:"rgb(150, 191, 228)" }}>
           <h1>{props.userId} </h1>
