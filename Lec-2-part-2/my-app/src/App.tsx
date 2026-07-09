@@ -1,19 +1,16 @@
 import axios from 'axios'
 import { useState } from 'react';
-
-
-const [Data , setData] = useState(0)
-
-axios.get("https://jsonplaceholder.typicode.com/todos/")
-    .then(response=> {
-       setData = response.data
-    })
-
    
 function App(){
+  let [Data , setData] = useState(0)
+  
+axios.get("https://jsonplaceholder.typicode.com/todos/")
+    .then(response=> {
+       setData (c=> response.data)
+    })
     return(
       <div>
-
+        {JSON.stringify(Data)}
        </div>
     )
   }
