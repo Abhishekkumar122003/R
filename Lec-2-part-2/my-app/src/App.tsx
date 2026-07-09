@@ -1,13 +1,16 @@
 import axios from 'axios'
-import { useState } from 'react';
+import { useEffect, useEffectEvent, useState } from 'react';
    
 function App(){
   let [Data , setData] = useState(0)
-  
+  useEffect(()=>{
+     
 axios.get("https://jsonplaceholder.typicode.com/todos/")
     .then(response=> {
        setData (c=> response.data)
     })
+    
+  }, [setData])
     return(
       <div>
         {JSON.stringify(Data)}
