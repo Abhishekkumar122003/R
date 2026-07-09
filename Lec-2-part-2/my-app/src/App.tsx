@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useEffect, useEffectEvent, useState } from 'react';
+import { useEffect, useState } from 'react';
    
 function App(){
   let [Data , setData] = useState(0)
