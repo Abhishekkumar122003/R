@@ -6,7 +6,9 @@ let start;
 let i=0;
   function startClock(){
     start = setInterval(()=>{
-      setSecondPassed(s => s +1)
+      setSecondPassed(function (currentValue){
+        return currentValue +1;
+      })
     }, 1000)
     console.log(start ,"hi there",  i)
   }
