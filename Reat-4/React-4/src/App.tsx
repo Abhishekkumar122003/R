@@ -14,7 +14,8 @@ function App() {
   }
 
   function stopClock(){
-    clearInterval(interval)
+    clearInterval(interval);
+    setIntervalVariable(0);
   }
   return (
     <div
