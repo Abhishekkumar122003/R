@@ -1,20 +1,20 @@
 import { useState } from "react";
 
+let intervalId:any;
 function App() {
   const [secondPassed, setSecondPassed] = useState(0);
-let start;
-let i=0;
+
   function startClock(){
-    start = setInterval(()=>{
+    intervalId = setInterval(()=>{
       setSecondPassed(function (currentValue){
         return currentValue +1;
       })
     }, 1000)
-    console.log(start ,"hi there",  i)
+  
   }
 
-  function StopClock(){
-    // clearInterval(start)
+  function stopClock(){
+    clearInterval(intervalId)
   }
   return (
     <div
@@ -32,7 +32,7 @@ let i=0;
       >
         <div style={{ display: "flex", justifyContent: "center" }}>
           <button onClick={startClock} >Start CLock</button>
-          {/* <button onClick={StopClock}>Stop CLock</button> */}
+          <button onClick={stopClock}>Stop CLock</button>
         </div>
 
         <div>
