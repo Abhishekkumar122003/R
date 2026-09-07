@@ -1,222 +1,47 @@
-import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+
+import { useTodos } from "./hooks/useTodos";
+import type { Dispatch, SetStateAction } from "react";
 
 
 function App() {
-  const [secondPassed, setSecondPassed] = useState(0);
-  let interval = useRef(0) 
-  function startClock(){
-      interval.current = setInterval(()=>{
-      setSecondPassed(function (currentValue){
-        return currentValue +1;
-      })
-    }, 1000)
-    
-  }
-
-  function stopClock(){
-    clearInterval(interval.current);
-
-  }
-  return (
-    <>
-
-    {/* <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        width: "100vw",
-      }}
-    >
+  const {todos, setTodos} = useTodos();
   
-      <div
-        style={{ fontSize: "100px", display: "flex", flexDirection: "column" }}
-      >
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <button onClick={startClock} >Start CLock</button>
-          <button onClick={stopClock}>Stop CLock</button>
+ return <div>
+  {todos.map(t => <Todo title={t.title} id={(t).id} setTodos={setTodos} />)}
+ </div>
+}
+
+type TodoType = {
+  title:string,
+  id:string,
+  setTodos: Dispatch<SetStateAction<TodoItem[]>>
+}
+
+type TodoItem = {
+  title: string,
+  id: string
+}
+
+function Todo({title, id , setTodos}:TodoType){
+  console.log(id)
+  return <div style={{padding:20, margin:20 , border:"2px solid yellowGreen", cursor:"pointer"}}>
+    <div>
+      {title }
+    <br />
+    {id}
+    </div>
+      <DeleteButton setTodos={setTodos} id={id}/>
+  </div>
+}
+
+function DeleteButton({setTodos , id}:TodoType){
+return <div>
+          <div style={{background:"orange", cursor:"pointer", border:"2px solid red", }} onClick={()=>{
+            setTodos(todos=>todos.filter(t=>t.id != id))
+          }} >
+                Delete
+          </div>
         </div>
 
-        <div>
-          {secondPassed}s
-          </div>
-      </div>
-    </div> */}
-    {/* <Easy/> */}
-    <FetchData/>
-
-    </>
-  );
 }
-
-function Easy(){
-  const divRef= useRef<HTMLDivElement>(null);
-  return(
-    <div style={{padding:23}}>
-      <div ref ={divRef} style={{fontSize: 10, height: "80vh", overflow:'scroll'}} >
-        Many philosophers and thinkers tried to build the model of a perfect society. Some of these works were completely utopian, and some of these ideas were successfully (or unsuccessfully) applied in practice. One of the greatest thinkers of all times whose political view found their reflection in practice was John Lock.
-
-Get a custom essay on Lock’s Concept Ideas of a Perfect Society
-185
-writers online
-John Lock is one of the greatest thinkers and philosophers of England whose theories were taken as the basis for many studies in the fields of philosophy, pedagogics and political sciences. The main fields of his activities were education, metaphysics, political philosophy and epistemology.
-
-The most famous of his theories are “tabula rasa”, state of nature, rights of life and theories related to the structure and principles of a perfect society. Some of his ideas were adopted and extended by other philosophers and scientists, such as Hume and Kant. One of the major fields of his work was the sphere of politics. He made a great contribution to it with his investigations.
-
-Lock worked on the problem of the “human nature”, “civil society” and “natural state”. The essence of these ideas were presented and discussed in his major work Two Treatises of Government.
-
-In The Second Treatise (the second part of the book), he presented his ideas of the state of nature and civil society as the basic ideas of a perfect social structure and commonwealth analyzing such concepts as freedom, property, common good, positive law, social contract and some others.
-
-However, some of these ideas, in particular the idea of property and positive law, sometimes call several contradictions of their applications to their implementations to real social and political structure.
-
-At any rate, Lock’s ideas of equality and independence became the basis for many social laws, particularly, they were reflected in the American Declaration of Independence. Moreover, several principles of the Lock’s government could be found in the state papers of many countries. The concept ideas of the state of nature, law of nature, civil state and common good were discussed by Lock in his works.
-
-1 hour!
-The minimum time our certified writers need to deliver a 100% original paper
-The major of them are Two Treatises of Government, First Tract of Government, Second Tract of Government, Questions Concerning the Law of Nature. In these works, Lock explained his views on the role of government and the principles of its functioning. He accentuated that all people are equal and have rights and needs that should be the major preoccupation of every state.
-
-Lock accentuated that people should obey the rules of their society, however, they have a full right to change the government if it does not fulfill its functions and its actions begin to violence the society. Lock also presented the conditions when people can rebel against the government in order to replace it by another one.
-
-The most detailed and augmented explanation of Lock’s political theory can be found in his major work on political philosophy Two Treatises of Government. This work is dedicated to the development of the ideas of the civil society that should be based on the natural law. The major ideas and theories are presented in The Second Treatise.
-
-The principles of The Second Treatise had an influence on the core ideas of the political philosophy of the west countries. Moreover, the liberal premises of the Lock’s theories became the concept ideas of the present-day liberal-democratic state.
-
-In addition, the structure of the government suggested by Lock coincides with the structure of government of many modern countries. Thus, John Lock’s political ideas had a great influence on the formation of the state structure of many modern countries.
-
-What are the major concepts of a perfect society and how should they be applied to the state structure and government? As it has already been mentioned, the major principles of the liberal government system described by Lock are the state of nature, civil state, personal freedom and property. All these ideas are gradually and logically presented in the book, and supported by explanations and examples.
-
-So, according to Lock, the basis for every civil state is the state of nature that presupposes a complete freedom of every individual. Everybody are equal and nobody has any power over another person: “… a state of perfect freedom to order their actions, and dispose of their possessions and persons, as they think fit, within the bounds of the law of nature, without asking leave, or depending upon the will of any other” (Lock, 1980, p. 8).
-
-Remember!
-This is just a sample
-You can get your custom paper by one
-of our expert writers
-Moreover, everybody posses the common property (the earth) and an individual property, which is his body and every product of the individual’s labor. In the chapter “Of Property”, Lock often reveals to God and assuming that God gave to people the right for the common and individual property.
-
-Man can use the earth, however, without waste. If one has to many products of his/her labor to cover personal needs, one can exchange these products with other person. These leads to the barter and later the trade establishes. Now, all goods can be trade and that is the purpose of money development. As people have right and property, they want to protect their property and their natural rights.
-
-Consequently, they enter the society, as the natural law cannot do it for them anymore. This is the main reason why people form communities and establish the government. This community of people becomes a civil state. Thus, people should live in the community and obey their complete natural freedom to the laws of the civil state. In its turn, the civil state is based on the natural laws that indicate people’s equality and freedom.
-
-Entering the society, people make a social contract according to which they have individual rights and freedoms and they should respect the rights and freedoms of other individuals. The government of the civil society should think about the commonwealth of every member of it and work for the common good.
-
-It is directed by the rules of the positive law. The positive law is a written law that presuppose the adoption of the natural law to the social norms: “…laws human must be made according to the general laws of nature, and without contradiction to any positive law of scripture, otherwise they are ill made” (Lock, 1980, P. 72)
-
-. Lock presented the structure of the government which should have executive, legislative and federative power. The government is the majority which watch the implementations of the civil laws. However, if the government acts for its own benefit and begins to harm people, they have the right to rebel against this government and replace it by another one.
-
-These ideas are extremely progressive for Lock’s time and they sound as a model of the democratic power, actually, it is the basic structure of it. However, Lock assumed that he did not describe the democratic power and his ideas may be implemented in every type of government. The idea of the Lock society is almost perfect, however, there are several questions that appear after analyzing it.
-
-What if one does not want to join such society and what if one does not possess any property and cannon enter into the trade? How will the society treat those people and what laws can be applied to them? Lock does not answer such questions. Moreover, Lock does not take into account human’s negative values, such as anger, envy and the pursuit of easy profit.
-
-Some people always have more than others and some are not satisfied with what they have. Moreover, if to consider the differences of the cultures and beliefs, his ideas cannot be implemented at all. Such system may be realized in west countries as it coincides with the laws of God and its mentality. However, can such civil state be the basis for the eastern countries as they have absolutely different social values?
-
-The idea of the “Positive law” is often debated by some scientists. For example, Alex Scott Tuckness in his book mentions, that positive law should be interpreted from the point of view of moral and legacy, “Positive law must be interpreted in light of those (moral) principles that can render it legitimate” (Tuckness, 2002, p. 147).
-
-At any rate, the concepts of the Lock society were adopted by many state systems, especially those, based on the democracy and liberalism.
-
-In particular, the concepts of personal freedom, natural rights and social rights to change the government shaped the criteria of the constitution of the United States which rested on Lockean principles of equality and a government working to the best advantage of the people” (SparkNotes Editors, n.d.).
-
-John Lock’s work Two Treatises of Government is one of the best works devoted to the political philosophy. The majority of his ideas was very innovative for his time that were adopted by lots of countries as the basis for their state system.
-
-However, certain ideas, such as the idea of the property and positive law, regardless of their perfect concept, are sometimes met with skepticism. Thus, they were discussed and interpreted many times. Some of them can be found in the constitutions and state papers of numerous Western countries.
-
-Reference List
-Locke, John. (1980) The Second Treatise of Civil Government. United States of America, C.B. Macpherson.
-
-SparkNotes Editors. “SparkNote on Locke’s Second Treatise on Civil Government.” [Internet], SparkNotes LLC. n.d.. Web.
-
-Tuckness, A. S (2002) Lock and the legislative point of view. New Jersey, Preston University Press.
-
-Sample Details
-Subjects
-Philosophy
-Philosophical Theories
-Type
-Explicatory Essay
-Reviewed by
-Dr. Olha Stoliarchuk
-Pages
-5
-Words
-1524
-The Design of Perfect Society
-Ideal Society by Plato
-Society: The Government and Its Citizens
-The State and The Society
-The Utopian Society Concept
-Natural and Positive Law
-Concepts of Civil Law Versus Sharia Law
-Anarchism and Thomas Hobbes’s Ideas
-Platonic, Aristotelian, and Marxist Societies
-Cite This paper
-You're welcome to use this sample in your assignment. Be sure to cite it correctly
-APA-7
-MLA-9
-Harvard
-Chicago (A-D)
-Chicago (N-B)
-Reference
-
-IvyPanda. (2019, June 6). Lock’s Concept Ideas of a Perfect Society. https://ivypanda.com/essays/locks-concept-ideas-of-a-perfect-society/
-
-
-Copy to Clipboard
-More Essays on Philosophical Theories
-Plato’s “Allegory of the Cave” and “You, Screws”
-“The Experience of Space and Time”
-Immanuel Kant’s – Duty Theory of Ethics
-Commentary on The Apology
-“What Is Enlightenment?” by Immanuel Kant
-Global Injustice in Modern World
-The Crisis of Love and Inquiry
-Analysis of “On the Three Metamorphoses” Speech by Zarathustra
-The Dialogue of Phaedrus: The Crises of Love and Inquiry
-Epicureanism and Stoicism
-
-Download
-
-Print
-Updated:
-Jun 10th, 2019
-Get a plagiarism-free paper
-Your privacy is extremely important to us. We utilize security vendors that protect and ensure the integrity of our platform while keeping your private information safe.
-SSL Certificate Checker
-DMCA.com Protection Status
-Contact Us
-
-      </div>
-      <button onClick={() => {
-        divRef.current?.scrollTo({top:0})
-      }} >To the Top</button>
-
-    </div>
-  )
-}
-
-function FetchData(){
-
-  const [todo , setTodos] = useState<{title:string}[] >([]);
-
-  useEffect(() => {
-    let interval = setInterval (() =>{axios.get("https://jsonplaceholder.typicode.com/todos/")
-    .then(response => {
-          setTodos(response.data);
-    })}, 10*1000)
-    return () => {
-      clearInterval(interval)
-    }
-  },[] )
-
-  return(
-    <>
-    <div>
-      {todo.map( t=> <div style={{padding:20, border:"2px solid white" , margin:20, }}>
-        {t.title}
-      </div> )}
-    </div>
-    </>
-  )
-}
-
-export default App;
+export default App
